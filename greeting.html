@@ -7,13 +7,44 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <audio id="bgMusic" autoplay>
-      <source src="src/assets/music/song.mp3?nocache=" type="audio/mpeg">
-    </audio>
+  <audio id="bgMusic" autoplay loop>
+    <source src="assets/music/song.mp3?nocache=" type="audio/mpeg">
+  </audio>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let audio = document.getElementById("bgMusic");
 
-    <div class="container">
+      // Виправлення для мобільних пристроїв
+      audio.setAttribute("playsinline", ""); // Додаємо playsinline через JS
+      audio.volume = 0.5; // Встановлюємо гучність
+
+      // Запускаємо музику або показуємо кнопку, якщо браузер блокує
+      audio.play().catch(error => {
+        console.log("Автозапуск заблокований браузером", error);
+        let tapToPlay = document.createElement("div");
+        tapToPlay.innerText = "🔊 Натисніть, щоб увімкнути музику";
+        tapToPlay.style.position = "fixed";
+        tapToPlay.style.top = "50%";
+        tapToPlay.style.left = "50%";
+        tapToPlay.style.transform = "translate(-50%, -50%)";
+        tapToPlay.style.background = "rgba(0,0,0,0.7)";
+        tapToPlay.style.color = "white";
+        tapToPlay.style.padding = "10px 20px";
+        tapToPlay.style.borderRadius = "10px";
+        tapToPlay.style.cursor = "pointer";
+        document.body.appendChild(tapToPlay);
+
+        tapToPlay.addEventListener("click", function () {
+          audio.play();
+          tapToPlay.remove();
+        });
+      });
+    });
+  </script>
+
+  <div class="container">
       <h1 class="pulse-message">Кохаю тебе, моє серденько! 💖</h1>
-      <img src="src/assets/images/tom_and_jerry.gif" class="characters circle" id="characters" alt="gif">
+      <img src="assets/images/tom_and_jerry.gif" class="characters circle" id="characters" alt="gif">
     </div>
 
     <script src="main.js"></script>
