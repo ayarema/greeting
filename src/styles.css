@@ -77,7 +77,12 @@ body {
     font-weight: bold;
     animation: pulseText 2s infinite;
     position: absolute;
-    top: 10%;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    width: 100%;
+    max-width: 90%;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -118,4 +123,19 @@ body {
     0% { transform: translate(-50%, -50%) rotate(-3deg) scale(1.5); }
     50% { transform: translate(-50%, -50%) rotate(3deg) scale(1.5); }
     100% { transform: translate(-50%, -50%) rotate(-3deg) scale(1.5); }
+}
+
+/* Адаптація для мобільних */
+@media screen and (max-width: 768px) {
+    .pulse-message {
+        font-size: 24px;
+        top: 3%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .pulse-message {
+        font-size: 20px;
+        top: 2%;
+    }
 }
