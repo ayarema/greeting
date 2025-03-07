@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+}
+
+/* Стилі для першої сторінки */
+.greeting-card {
+    background-image: url("/src/assets/images/pixel_sunset.png");
+    background-size: cover;
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pulse-text {
+    font-size: 48px;
+    font-weight: bold;
+    animation: pulseText 2s infinite;
+    color: #4B0082;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulseText {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.animated-button {
+    background-color: #FFF0F5;
+    border: none;
+    padding: 15px 30px;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.animated-button:hover {
+    transform: scale(1.2);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Стилі для другої сторінки */
+.container {
+    background-image: url("/src/assets/images/pixel_sunset.png");
+    background-size: cover;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pulse-message {
+    font-size: 36px;
+    font-weight: bold;
+    animation: pulseText 2s infinite;
+    position: absolute;
+    top: 10%;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.characters {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.circle {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+}
+
+.flowers {
+    position: absolute;
+    top: 50%; /* Тут змінюй */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    width: 220px;
+    opacity: 0;
+}
+
+.flowers.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+    animation: sway 2s infinite alternate ease-in-out;
+}
+
+@keyframes sway {
+    0% { transform: translate(-50%, -50%) rotate(-3deg) scale(1.5); }
+    50% { transform: translate(-50%, -50%) rotate(3deg) scale(1.5); }
+    100% { transform: translate(-50%, -50%) rotate(-3deg) scale(1.5); }
+}
